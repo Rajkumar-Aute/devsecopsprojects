@@ -1,0 +1,17 @@
+trigger: none
+#- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: |
+    mvn verify package sonar:sonar -Dsonar.host.url=$(SONARCLOUDURL) -Dsonar.organization=$(SONARCLOUDORGANIZATION) -Dsonar.projectKey=$(SONARCLOUDPROJECTKEY) -Dsonar.login=$(sonarcloudtoken)
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+
+java-sample-2023
