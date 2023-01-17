@@ -4,9 +4,16 @@ trigger: none
 pool:
   vmImage: ubuntu-latest
 
+
 steps:
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.ArtifactStagingDirectory)/java'
+    Contents: '**'
+    TargetFolder: '$(Pipeline.Workspace)'
+
 - script: |
-    java/mvn verify package sonar:sonar -Dsonar.host.url=$(SONARCLOUDURL) -Dsonar.organization=$(SONARCLOUDORGANIZATION) -Dsonar.projectKey=$(SONARCLOUDPROJECTKEY) -Dsonar.login=$(sonarcloudtoken)
+    mvn verify package sonar:sonar -Dsonar.host.url=$(SONARCLOUDURL) -Dsonar.organization=$(SONARCLOUDORGANIZATION) -Dsonar.projectKey=$(SONARCLOUDPROJECTKEY) -Dsonar.login=$(sonarcloudtoken)
   displayName: 'Run a one-line script'
 
 - script: |
