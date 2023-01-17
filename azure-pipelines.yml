@@ -6,7 +6,7 @@ pool:
 
 steps:
 - script: |
-    mvn verify package sonar:sonar -Dsonar.host.url=$(SONARCLOUDURL) -Dsonar.organization=$(SONARCLOUDORGANIZATION) -Dsonar.projectKey=$(SONARCLOUDPROJECTKEY) -Dsonar.login=$(sonarcloudtoken)
+    java/mvn verify package sonar:sonar -Dsonar.host.url=$(SONARCLOUDURL) -Dsonar.organization=$(SONARCLOUDORGANIZATION) -Dsonar.projectKey=$(SONARCLOUDPROJECTKEY) -Dsonar.login=$(sonarcloudtoken)
   displayName: 'Run a one-line script'
 
 - script: |
