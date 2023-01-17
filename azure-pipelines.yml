@@ -8,7 +8,7 @@ pool:
 steps:
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.ArtifactStagingDirectory)/java'
+    SourceFolder: '$(build.sourcesDirectory)/java'
     Contents: '**'
     TargetFolder: '$(Pipeline.Workspace)'
 
