@@ -10,7 +10,7 @@ steps:
   inputs:
     SourceFolder: '$(build.sourcesDirectory)/java'
     Contents: '**'
-    TargetFolder: '$(Pipeline.Workspace)'
+    TargetFolder: '$(Build.SourcesDirectory)'
 
 - script: |
     mvn verify package sonar:sonar -Dsonar.host.url=$(SONARCLOUDURL) -Dsonar.organization=$(SONARCLOUDORGANIZATION) -Dsonar.projectKey=$(SONARCLOUDPROJECTKEY) -Dsonar.login=$(sonarcloudtoken)
